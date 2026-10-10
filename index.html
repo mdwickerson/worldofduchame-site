@@ -479,10 +479,20 @@
     const poster = slot.querySelector('.poster');
     poster.removeAttribute('target');
     poster.querySelector('span:last-child').textContent = 'Watch the trailer';
+    // YouTube's player refuses to run (Error 153, "video player configuration
+    // error") on a page that cannot say which site it is on: a page opened
+    // from disk (file:///) has no origin to send. There it opens the video on
+    // YouTube instead; on the real site it plays here, telling YouTube the
+    // page's origin.
+    const local = location.protocol === 'file:';
+    poster.href = `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
+    if (local) poster.setAttribute('target', '_blank');
     poster.addEventListener('click', (e) => {
-      e.preventDefault();
       if (typeof gtag === 'function') gtag('event', 'trailer_play');
-      slot.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0" title="World of Duchame trailer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      if (local) return;   // the link opens it on YouTube
+      e.preventDefault();
+      const origin = encodeURIComponent(location.origin);
+      slot.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&origin=${origin}" title="World of Duchame trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
     });
   }
 

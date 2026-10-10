@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World of Duchame &amp; The Dark Tide: Free Browser RPG</title>
+<meta name="description" content="A 1988 D&amp;D binder, rebuilt as two free browser RPGs. 68 chapters, played as a lord of the Good or a servant of the Dark Lord. No install, no account.">
+<link rel="canonical" href="https://worldofduchame.com/">
+<meta name="theme-color" content="#140f23">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://worldofduchame.com/">
+<meta property="og:site_name" content="World of Duchame">
+<meta property="og:title" content="World of Duchame &amp; The Dark Tide: Free Browser RPG">
+<meta property="og:description" content="A 1988 D&amp;D binder, rebuilt as two free browser RPGs. 68 chapters, Good or Ill. No install, no account.">
+<meta property="og:image" content="https://worldofduchame.com/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A lord of the Good with his company at a river crossing, beside the winged Dark Lord: World of Duchame and The Dark Tide">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="World of Duchame &amp; The Dark Tide: Free Browser RPG">
+<meta name="twitter:description" content="A 1988 D&amp;D binder, rebuilt as two free browser RPGs. 68 chapters, Good or Ill.">
+<meta name="twitter:image" content="https://worldofduchame.com/img/og-image.jpg">
+
+<link rel="icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "World of Duchame & The Dark Tide",
+  "url": "https://worldofduchame.com/",
+  "image": "https://worldofduchame.com/img/og-image.jpg",
+  "description": "A browser RPG built from a real 1988 Advanced Dungeons and Dragons binder: two complete campaigns across 68 chapters, as a lord of the Good or a servant of the Dark Lord. Free, no install or account needed.",
+  "genre": ["Role-playing game", "RPG", "Dungeon crawler"],
+  "gamePlatform": ["Web browser"],
+  "applicationCategory": "Game",
+  "playMode": "SinglePlayer",
+  "author": { "@type": "Person", "name": "Michael Wickerson" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "url": "https://michaelwickerson.itch.io/world-of-duchame" },
+  "sameAs": ["https://michaelwickerson.itch.io/world-of-duchame", "https://www.youtube.com/@MichaelWickerson", "https://www.patreon.com/cw/WorldOfDuchame"]
+}
+</script>
+
+<!-- Google Analytics: the same property the game reports to (js/analytics.js). -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BM7RRTVJ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1BM7RRTVJ0');
+</script>
+
+<style>
+  :root {
+    --bg: #140f23;
+    --bg-2: #1b1530;
+    --card: rgba(26, 20, 48, 0.86);
+    --border: rgba(255, 255, 255, 0.12);
+    --text: #ece8f5;
+    --muted: #b3abc9;
+    --accent: #f07a2b;
+    --gold: #f2c14e;
+    --gold-deep: #6b4a12;
+    --blood: #ff5a46;
+    --blood-deep: #4a0d10;
+    --radius: 14px;
+    --wrap: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.6 "Lato", system-ui, sans-serif; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--gold); color: #000; padding: 8px 12px; border-radius: 6px; z-index: 50; }
+  .skip:focus { left: 8px; }
+  h1, h2, h3 { font-family: "Cinzel", Georgia, serif; line-height: 1.2; margin: 0 0 .5em; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  h3 { font-size: 1.15rem; }
+  section { padding: 64px 0; }
+  section.alt { background: var(--bg-2); }
+  .lede { color: var(--muted); max-width: 720px; margin: 0 0 32px; }
+  /* PHONES (7): nothing wider than the screen. The name wraps and shrinks, the
+     tag line wraps, and nothing can push the page sideways. */
+  html, body { overflow-x: clip; }
+  @media (max-width: 560px) {
+    .brand { white-space: normal; font-size: .9rem; line-height: 1.2; }
+    .brand span { display: block; }
+    .eyebrow { font-size: .72rem; letter-spacing: .06em; }
+    .hero { padding: 64px 0 56px; }
+    .facts { gap: 10px 18px; }
+    .btn { padding: 13px 20px; }
+    .pad td:first-child { white-space: normal; }
+    section { padding: 48px 0; }
+  }
+
+  /* Header */
+  header.top { position: sticky; top: 0; z-index: 20; background: rgba(20, 15, 35, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
+  .brand { font-family: "Cinzel", Georgia, serif; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: .04em; white-space: nowrap; }
+  .brand span { color: var(--blood); }
+  nav.links { display: flex; gap: 20px; align-items: center; }
+  nav.links a { color: var(--text); text-decoration: none; font-size: .95rem; }
+  nav.links a:hover { color: var(--gold); }
+  nav.links a.btn { padding: 8px 16px; }
+  details.menu { display: none; }
+  @media (max-width: 860px) {
+    nav.links { display: none; }
+    details.menu { display: block; position: relative; }
+    details.menu summary { list-style: none; cursor: pointer; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; }
+    details.menu summary::-webkit-details-marker { display: none; }
+    details.menu .panel { position: absolute; right: 0; top: 48px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 8px; display: flex; flex-direction: column; min-width: 200px; }
+    details.menu .panel a { color: var(--text); text-decoration: none; padding: 10px 12px; border-radius: 6px; }
+    details.menu .panel a:hover { background: rgba(255,255,255,.06); }
+  }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; text-decoration: none; border-radius: 10px; padding: 14px 26px; border: 1px solid transparent; transition: transform .15s, filter .15s; }
+  .btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+  .btn-play { background: var(--accent); color: #1a0e04; font-size: 1.15rem; box-shadow: 0 10px 30px rgba(240, 122, 43, .35); }
+  .btn-ghost { color: var(--text); border-color: var(--border); background: rgba(255,255,255,.04); }
+  .btn-good { background: var(--gold); color: #241806; }
+  .btn-ill { background: var(--blood); color: #200606; }
+
+  /* Hero */
+  .hero { position: relative; padding: 96px 0 88px; background: url("img/hero.jpg") center / cover no-repeat, var(--bg); text-align: center; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,15,35,.35), rgba(20,15,35,.92)); }
+  .hero .wrap { position: relative; z-index: 1; }
+  .eyebrow { display: inline-block; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(242,193,78,.35); border-radius: 999px; padding: 6px 14px; margin-bottom: 20px; background: rgba(0,0,0,.25); }
+  .hero h1 { font-size: clamp(2rem, 5.2vw, 3.6rem); margin: 0 auto 16px; max-width: 920px; text-shadow: 0 3px 12px rgba(0,0,0,.6); }
+  .hero h1 .g { color: var(--gold); } .hero h1 .i { color: var(--blood); }
+  .hero p.sub { font-size: 1.15rem; color: var(--text); max-width: 720px; margin: 0 auto 32px; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .facts { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 36px; color: var(--muted); font-size: .95rem; }
+  .facts b { color: var(--text); }
+
+  /* Campaign cards */
+  .campaigns { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 760px) { .campaigns { grid-template-columns: 1fr; } }
+  .camp { border-radius: var(--radius); overflow: hidden; background: var(--card); border: 1px solid var(--border); display: flex; flex-direction: column; }
+  .camp.good { border-color: rgba(242,193,78,.45); box-shadow: 0 0 0 1px rgba(242,193,78,.12), 0 20px 50px rgba(0,0,0,.35); }
+  .camp.ill { border-color: rgba(255,90,70,.45); box-shadow: 0 0 0 1px rgba(255,90,70,.12), 0 20px 50px rgba(0,0,0,.35); }
+  .camp img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+  .camp .body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .camp h3 { font-size: 1.4rem; margin: 0; }
+  .camp.good h3 { color: var(--gold); } .camp.ill h3 { color: var(--blood); }
+  .camp ul { margin: 0 0 8px; padding-left: 1.1em; color: var(--muted); }
+  .camp ul li { margin: 4px 0; }
+  .camp .btn { margin-top: auto; align-self: flex-start; }
+
+  /* Video */
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: #000 url("img/river-crossing.jpg") center / cover; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video .poster { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: rgba(10, 8, 18, .55); color: var(--text); text-decoration: none; border: 0; width: 100%; cursor: pointer; font: inherit; }
+  .video .play { width: 84px; height: 84px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  .video .play::before { content: ""; border-left: 26px solid #1a0e04; border-top: 16px solid transparent; border-bottom: 16px solid transparent; margin-left: 6px; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .gallery { grid-template-columns: 1fr; } }
+  .gallery figure { margin: 0; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .gallery button { all: unset; cursor: zoom-in; display: block; width: 100%; }
+  .gallery img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; transition: transform .3s; }
+  .gallery button:hover img { transform: scale(1.03); }
+  .gallery figcaption { padding: 10px 14px; font-size: .92rem; color: var(--muted); }
+  .gallery figcaption b { color: var(--text); }
+  dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: min(1200px, 94vw); }
+  dialog.lightbox::backdrop { background: rgba(5, 3, 10, .88); }
+  dialog.lightbox img { border-radius: 10px; max-height: 82vh; width: auto; margin: 0 auto; }
+  dialog.lightbox p { color: var(--text); text-align: center; margin: 10px 0 0; }
+  dialog.lightbox form { position: absolute; top: -44px; right: 0; }
+  dialog.lightbox form button { background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; cursor: pointer; font: inherit; }
+
+  /* Features */
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 860px) { .features { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .features { grid-template-columns: 1fr; } }
+  .feature { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
+  .feature .ico { font-size: 1.6rem; line-height: 1; margin-bottom: 10px; }
+  .feature p { margin: 0; color: var(--muted); font-size: .97rem; }
+
+  /* Will it run */
+  .runs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+  @media (max-width: 760px) { .runs { grid-template-columns: 1fr; } }
+  .checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .checks li { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px 12px 44px; position: relative; color: var(--muted); }
+  .checks li b { color: var(--text); }
+  .checks li::before { content: "✔"; position: absolute; left: 16px; top: 12px; color: var(--gold); font-weight: 700; }
+  .pad { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+  .pad table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  .pad td { padding: 6px 4px; border-top: 1px solid var(--border); color: var(--muted); }
+  .pad td:first-child { color: var(--text); white-space: nowrap; padding-right: 14px; }
+  .pad code { background: rgba(255,255,255,.08); padding: 1px 6px; border-radius: 5px; }
+
+  /* News */
+  .news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 860px) { .news { grid-template-columns: 1fr; } }
+  .news a.item { display: block; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; text-decoration: none; color: var(--text); transition: border-color .15s; }
+  .news a.item:hover { border-color: var(--accent); }
+  .news .date { font-size: .85rem; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+  .news h3 { margin: 6px 0 6px; }
+  .news p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* Final call and footer */
+  .final { text-align: center; }
+  .final p { color: var(--muted); }
+  footer { background: #0e0a1a; border-top: 1px solid var(--border); padding: 40px 0 32px; color: var(--muted); font-size: .95rem; }
+  footer .cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 24px; }
+  @media (max-width: 760px) { footer .cols { grid-template-columns: 1fr; } }
+  footer h4 { font-family: "Cinzel", Georgia, serif; color: var(--text); margin: 0 0 10px; font-size: 1rem; }
+  footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+  footer .legal { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border); font-size: .8rem; line-height: 1.5; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">World of Duchame <span>&amp; The Dark Tide</span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#campaigns">Campaigns</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#features">Features</a>
+      <a href="#runs">Will it run?</a>
+      <a href="#news">What's new</a>
+      <a class="btn btn-play" href="https://michaelwickerson.itch.io/world-of-duchame" data-track="play" data-where="nav">Play free</a>
+    </nav>
+    <details class="menu">
+      <summary aria-label="Open the menu">☰ Menu</summary>
+      <div class="panel">
+        <a href="https://michaelwickerson.itch.io/world-of-duchame" data-track="play" data-where="menu"><b>▶ Play free</b></a>
+        <a href="#campaigns">Campaigns</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#features">Features</a>
+        <a href="#runs">Will it run?</a>
+        <a href="#news">What's new</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+  <!-- 1 + 3: what it is, and the way in, before anything else -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <span class="eyebrow">Free · in your browser · no install, no account</span>
+      <h1>A 1988 D&amp;D binder, rebuilt as two free browser RPGs: <span class="g">Good</span> or <span class="i">Ill</span></h1>
+      <p class="sub">Walk 68 chapters of the Duchame Marches, traced from the author's own graph-paper maps. Lead a company of the Good to Castle Duchame, or rise from its depths as a servant of the Dark Lord.</p>
+      <div class="cta-row">
+        <a class="btn btn-play" href="https://michaelwickerson.itch.io/world-of-duchame" data-track="play" data-where="hero">▶ Play free now</a>
+        <a class="btn btn-ghost" href="#campaigns">Choose your side</a>
+      </div>
+      <div class="facts" aria-label="At a glance">
+        <span><b>68</b> chapters</span>
+        <span><b>2</b> complete campaigns</span>
+        <span><b>21</b> Ill peoples to play</span>
+        <span><b>225</b>-page illustrated guidebook</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2: both campaigns at the door -->
+  <section id="campaigns">
+    <div class="wrap">
+      <h2>Choose your side</h2>
+      <p class="lede">The same world, the same 68 chapters, walked in opposite directions. Neither side is the easy one.</p>
+      <div class="campaigns">
+        <article class="camp good">
+          <img src="img/river-crossing.jpg" alt="A lord of the Good and his mounted company at a river crossing, a timber house and windmills beyond" width="1262" height="648" loading="lazy">
+          <div class="body">
+            <h3>⚔ The World of Duchame</h3>
+            <p>From the port town of Airport to the crater fortress of Castle Duchame, where Mildeonedehalkion waits.</p>
+            <ul>
+              <li>Raise a company of retainers who earn their rank</li>
+              <li>Found the Keep, swear the Paladin's oath to Adon</li>
+              <li>Fell each hold's guardian to open the way on</li>
+            </ul>
+            <a class="btn btn-good" href="https://michaelwickerson.itch.io/world-of-duchame" data-track="play" data-where="card" data-campaign="duchame">Play the Good road</a>
+          </div>
+        </article>
+        <article class="camp ill">
+          <img src="img/dark-lord.jpg" alt="The Dark Lord, horned and winged, on a glowing circle in the dark" width="900" height="900" loading="lazy" style="object-position: center 30%;">
+          <div class="body">
+            <h3>☠ The Dark Tide</h3>
+            <p>Begin at the bottom of Duchame as a servant of the Dark Lord, and break the Good's holds one by one, all the way out to Airport.</p>
+            <ul>
+              <li>Play an orc, a goblin, a drow, a hill giant, or one of 17 more Ill peoples</li>
+              <li>Rule by dominion; bind imps, ghouls and gargoyles</li>
+              <li>Raise the Dark Seat, swear the Black Oath to Gryphon</li>
+            </ul>
+            <a class="btn btn-ill" href="https://michaelwickerson.itch.io/world-of-duchame" data-track="play" data-where="card" data-campaign="darktide">Play the Dark Tide</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4: show the game: a video and the pictures -->
+  <section class="alt" id="gallery">
+    <div class="wrap">
+      <h2>See it in play</h2>
+      <p class="lede">Every model, texture and sound is made in code. Nothing is licensed from anyone else.</p>
+      <!-- THE TRAILER SLOT. Put a YouTube video's ID in data-video-id (the part after
+           "watch?v=") and the poster plays it here, from youtube-nocookie.com. Left empty,
+           the poster opens the YouTube channel instead. -->
+      <div class="video" id="trailer" data-video-id="LDQdDGhUV3c" style="margin-bottom: 28px;">
+        <a class="poster" href="https://www.youtube.com/@MichaelWickerson" target="_blank" rel="noopener" data-track="video">
+          <span class="play" aria-hidden="true"></span>
+          <span>Watch the gameplay videos on YouTube</span>
+        </a>
+      </div>
+      <div class="gallery">
+        <figure><button type="button" data-full="img/far-country.jpg" data-caption="The far country: the horizon, the lighthouse and the canals of a port"><img src="img/far-country.jpg" alt="The company on a stone quay beside a canal, a striped lighthouse beyond" width="1262" height="648" loading="lazy"></button><figcaption><b>The far country.</b> Every chapter drawn to the horizon.</figcaption></figure>
+        <figure><button type="button" data-full="img/river-crossing.jpg" data-caption="The company at the river crossing, mounted and on foot"><img src="img/river-crossing.jpg" alt="Mounted retainers at a river crossing" width="1262" height="648" loading="lazy"></button><figcaption><b>Your company.</b> Retainers who ride, fight and loot with you.</figcaption></figure>
+        <figure><button type="button" data-full="img/daemon-deep.jpg" data-caption="A daemon in the deep, by torchlight"><img src="img/daemon-deep.jpg" alt="A torchlit dungeon passage with a red banner and a daemon ahead" width="1262" height="648" loading="lazy"></button><figcaption><b>The deep.</b> Dark, lit only by what you carry.</figcaption></figure>
+        <figure><button type="button" data-full="img/dark-lord.jpg" data-caption="Mildeonedehalkion, the Dark Lord of Duchame"><img src="img/dark-lord.jpg" alt="The winged Dark Lord" width="900" height="900" loading="lazy" style="object-position: center 25%;"></button><figcaption><b>The Dark Lord.</b> Your enemy, or your master.</figcaption></figure>
+        <figure><button type="button" data-full="img/minions.jpg" data-caption="Minions of the Tide in a walled town"><img src="img/minions.jpg" alt="A servant's company of minions walking between timber walls" width="1262" height="648" loading="lazy"></button><figcaption><b>Minions of the Tide.</b> A servant's company is bound by fear.</figcaption></figure>
+        <figure><button type="button" data-full="img/natural-20.jpg" data-caption="The natural 20: gold for the Good, blood-red for the Dark Tide"><img src="img/natural-20.jpg" alt="Two d20 windows, gold and red, each showing a natural 20" width="1040" height="460" loading="lazy" style="object-fit: contain; background: #1a1626;"></button><figcaption><b>The natural 20.</b> Roll a true 20 and the die blazes.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5: what you can do -->
+  <section id="features">
+    <div class="wrap">
+      <h2>What you can do</h2>
+      <p class="lede">A real RPG with a world that keeps its author's 1988 voice: his maps, his characters, his villain.</p>
+      <div class="features">
+        <div class="feature"><div class="ico" aria-hidden="true">🛡️</div><h3>A company that grows</h3><p>Retainers rise from hired hand to shield of the realm. They carry their own light, loot the dead and take the best gear after you, in order of loyalty.</p></div>
+        <div class="feature"><div class="ico" aria-hidden="true">🗺️</div><h3>68 chapters from the binder</h3><p>Twenty holds traced room by room from the original graph paper, the rest built from each hold's own binder facts.</p></div>
+        <div class="feature"><div class="ico" aria-hidden="true">🔥</div><h3>Tear it down</h3><p>With eight retainers at your back, or the arms of a hill giant, pull down thrones, watchtowers and the enemy's siege engines.</p></div>
+        <div class="feature"><div class="ico" aria-hidden="true">🐎</div><h3>Survive the road</h3><p>Food and water for every mouth, horses, ponies and a wagon, camps with a watch, and weather you can see.</p></div>
+        <div class="feature"><div class="ico" aria-hidden="true">🎮</div><h3>Play your way</h3><p>Keyboard and mouse, touch, or a gamepad that works every menu. Four camera views, from over the shoulder to first person.</p></div>
+        <div class="feature"><div class="ico" aria-hidden="true">📖</div><h3>Books and films</h3><p>A 225-page illustrated guidebook beside the game, short films for the great moments, and an illustrated book for every chapter.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8: will it run for me? -->
+  <section class="alt" id="runs">
+    <div class="wrap">
+      <h2>Will it run for me?</h2>
+      <p class="lede">Almost certainly. If your browser can show a 3D map, it can play Duchame.</p>
+      <div class="runs">
+        <ul class="checks">
+          <li><b>Any modern browser</b> with WebGL: Chrome, Edge or Firefox on Windows, macOS or Linux.</li>
+          <li><b>Desktop or touch.</b> On a tablet or phone, a joystick appears on screen.</li>
+          <li><b>No install and no account.</b> Press Play and you are in.</li>
+          <li><b>Saves stay in your browser,</b> in ten slots. Clear your browser's site data and they go with it.</li>
+          <li><b>Free.</b> Support the game on Patreon if you enjoy it.</li>
+        </ul>
+        <div class="pad">
+          <h3>🎮 Playing with a controller</h3>
+          <p style="color: var(--muted); margin-top: 0;">Any Xbox-style pad works and drives every menu. For the most from it, an <b style="color: var(--text);">8BitDo Pro 2</b> in its Windows (XInput) mode. A D-pad-only pad plays the whole game through the quick menu.</p>
+          <table>
+            <tr><td>Left stick or D-pad</td><td>Walk, and move through menus</td></tr>
+            <tr><td>Right stick</td><td>Turn the camera</td></tr>
+            <tr><td>A / B</td><td>Talk / Jump</td></tr>
+            <tr><td>X / Y</td><td>Search / Inventory</td></tr>
+            <tr><td>Start / Select</td><td>Quick menu / Map</td></tr>
+          </table>
+          <p style="color: var(--muted); margin-bottom: 0; font-size: .92rem;">Switch it on or off from the title screen, or add <code>?pad=on</code> / <code>?pad=off</code> to the game's address.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10: proof of life -->
+  <section id="news">
+    <div class="wrap">
+      <h2>What's new</h2>
+      <p class="lede">The game is in active development. Follow along on the devlog.</p>
+      <div class="news">
+        <a class="item" href="https://michaelwickerson.itch.io/world-of-duchame/devlog/1701146/world-of-duchame-the-dark-tide" data-track="devlog">
+          <div class="date">October 10, 2026</div>
+          <h3>World of Duchame &amp; The Dark Tide</h3>
+          <p>Six weeks from a 1988 binder to two complete browser RPGs: the story so far, the milestones and what comes next.</p>
+        </a>
+        <a class="item" href="https://michaelwickerson.itch.io/world-of-duchame/devlog/1700546/the-dark-tide-complete-minions-the-dark-seat-the-war-at-airport-and-the-peoples-of-the-good" data-track="devlog">
+          <div class="date">October 10, 2026</div>
+          <h3>The Dark Tide Complete</h3>
+          <p>Minions, the Dark Seat, the War at Airport, and the peoples of the Good.</p>
+        </a>
+        <a class="item" href="https://michaelwickerson.itch.io/world-of-duchame/devlog/1699855/the-dark-tide-the-trip-out-of-hell" data-track="devlog">
+          <div class="date">October 9, 2026</div>
+          <h3>The Dark Tide: The Trip Out of Hell</h3>
+          <p>A servant of the Dark Lord climbs out of Duchame and onto the road, breaking the Good's holds one by one.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt final">
+    <div class="wrap">
+      <h2>The binder is open</h2>
+      <p>Free, in your browser, right now.</p>
+      <div class="cta-row">
+        <a class="btn btn-play" href="https://michaelwickerson.itch.io/world-of-duchame" data-track="play" data-where="final">▶ Play free now</a>
+        <a class="btn btn-ghost" href="https://www.patreon.com/cw/WorldOfDuchame" target="_blank" rel="noopener" data-track="patreon">Support on Patreon</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 6: every place the game lives -->
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>World of Duchame &amp; The Dark Tide</h4>
+        <p style="margin: 0;">A browser RPG built from a real 1988 Advanced Dungeons &amp; Dragons campaign binder, by Michael Wickerson. The illustrated guidebook opens from the game's title screen: <i>Read the Guidebook Online</i>.</p>
+      </div>
+      <div>
+        <h4>Play and follow</h4>
+        <ul>
+          <li><a href="https://michaelwickerson.itch.io/world-of-duchame" data-track="play" data-where="footer">Play on itch.io</a></li>
+          <li><a href="https://michaelwickerson.itch.io/world-of-duchame/devlog" data-track="devlog">Devlog</a></li>
+          <li><a href="https://www.youtube.com/@MichaelWickerson" target="_blank" rel="noopener" data-track="youtube">Tutorial videos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://www.patreon.com/cw/WorldOfDuchame" target="_blank" rel="noopener" data-track="patreon">Patreon</a></li>
+          <li><a href="https://www.wickersonstudios.com" target="_blank" rel="noopener" data-track="books">The 68 illustrated books</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      &copy; 1988, 2026 Michael Wickerson. All rights reserved. Dungeons &amp; Dragons is a trademark of Wizards of the Coast. World of Duchame is not affiliated with or endorsed by Wizards of the Coast.
+    </div>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Picture">
+  <form method="dialog"><button type="submit" aria-label="Close">✕ Close</button></form>
+  <img src="" alt="">
+  <p></p>
+</dialog>
+
+<script>
+  // WHAT BRINGS PLAYERS IN (10): every Play button says where it was and which side.
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('[data-track]');
+    if (!a || typeof gtag !== 'function') return;
+    gtag('event', a.dataset.track === 'play' ? 'play_click' : 'link_click', {
+      link_kind: a.dataset.track, placement: a.dataset.where || '', campaign: a.dataset.campaign || 'either',
+    });
+  });
+
+  // THE PICTURES, LARGER, in a dialog that Esc closes.
+  const box = document.getElementById('lightbox');
+  document.querySelectorAll('.gallery button[data-full]').forEach((b) => {
+    b.addEventListener('click', () => {
+      box.querySelector('img').src = b.dataset.full;
+      box.querySelector('img').alt = b.dataset.caption;
+      box.querySelector('p').textContent = b.dataset.caption;
+      if (box.showModal) box.showModal(); else window.open(b.dataset.full, '_blank');
+    });
+  });
+  box.addEventListener('click', (e) => { if (e.target === box) box.close(); });
+
+  // THE TRAILER: with an ID set, the poster plays the video here instead.
+  const slot = document.getElementById('trailer');
+  const id = (slot.dataset.videoId || '').trim();
+  if (id) {
+    const poster = slot.querySelector('.poster');
+    poster.removeAttribute('target');
+    poster.querySelector('span:last-child').textContent = 'Watch the trailer';
+    poster.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (typeof gtag === 'function') gtag('event', 'trailer_play');
+      slot.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0" title="World of Duchame trailer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    });
+  }
+
+  // The mobile menu closes when a link in it is chosen.
+  document.querySelectorAll('details.menu a').forEach((a) => a.addEventListener('click', () => a.closest('details').removeAttribute('open')));
+</script>
+</body>
+</html>
